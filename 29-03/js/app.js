@@ -1,15 +1,25 @@
+var datos=[];
 var ciudades=[];
 //console.log({"id":1,"nombre":"encarnacion"});
-ciudades.push({ id: 1, nombre: "encarnacion" });
-ciudades.push({ id: 2, nombre: "Hohenau" });
-ciudades.push({ id: 3, nombre: "San Cosme" });
-ciudades.push({ id: 4, nombre: "Fram" });
-ciudades.push({ id: 5, nombre: "Cambyreta" });
-console.log(ciudades);
+datos.push({ id: 1, nombre: "encarnacion" });
+datos.push({ id: 2, nombre: "Hohenau" });
+datos.push({ id: 3, nombre: "San Cosme" });
+datos.push({ id: 4, nombre: "Fram" });
+datos.push({ id: 5, nombre: "Cambyreta" });
+console.log(datos);
 
 function cargar(){
     ///alert("soy carga");
-    dibujarTabla();
+    var data= localStorage.getItem("data");
+    if (!data || data==""){     //ver si no existen cambios/data
+        console.log("entro la condicion");
+        let aux=JSON.stringify(datos);  //combierto los datos prederterminados a texto
+        ciudades=JSON.parse(aux);       //el texto guardado lo revierto a codigo en ciudades
+    }
+    else{
+        ciudades=JSON.parse(data);  //si existen, se sacan del data a ciudades
+    }
+    dibujarTabla()
 }
 function dibujarTabla(){
     console.log("dibujando");
@@ -29,7 +39,9 @@ function dibujarTabla(){
 							e.nombre +
 							"</td> <td><button data-id='" +
 							e.id +
-							"'  class='btn btn-warning btedit '>Editar</button></td> <td><button   class='btn btn-danger btdel '>Borrar</button></td></tr>";
+							"'  class='btn btn-warning btedit '>Editar</button></td> <td><button data-id='"+
+                            e.id +
+                            "'  class='btn btn-danger btdel '>Borrar</button></td></tr>";
         } 
         );
      // console.log(tbody) ;  
@@ -43,17 +55,22 @@ function addEventosClk()
         for (let i=0; i<btnEditar.length;i++)
         {
             btnEditar[i].addEventListener("click", clkeditar);
-            console.log(btnEditar[i]);
+            //console.log(btnEditar[i]);
         }
         var btnuevo=document.getElementById("btnew");
         btnew.addEventListener("click", clknuevo);
-        console.log("Los eventos fueron cargados")
+        console.log("Los eventos fueron cargados");
+        var btnborrar=document.getElementsByClassName("btdel");
+        //btnborrar.addEventListener("click", clkborrar);
+        for (let i=0; i<btnborrar.length;i++){
+            btnborrar[i].addEventListener("click", clkborrar);
+            //console.log(btnborrar[i]);
+        }
     }
-function clknuevo()
-    {
-            console.log("nuevo");
-                          document.getElementById("id").value =-1;
-						document.getElementById("nombre").value =""; 
+function clknuevo(){
+        console.log("nuevo");
+        document.getElementById("id").value =-1;
+		document.getElementById("nombre").value =""; 
     }
 
 function clkeditar(e) {
@@ -66,7 +83,6 @@ function clkeditar(e) {
               document.getElementById('id').value=item.id;  
               document.getElementById("nombre").value = item.nombre;  
             }
-
     });
 }
 
@@ -81,15 +97,30 @@ function guardar()
         gid=ciudades[ciudades.length-1].id+1;
         ciudades.push({ id: gid, nombre: gnombre });
         }
-        else
-        {
+        else{
         console.log("editar item")
-        ciudades.forEach((e) =>
-                {
-                    if (gid==e.id) 
-                     {
+        ciudades.forEach((e) =>{
+                    if (gid==e.id){
                         e.nombre=gnombre;
-                     }
-                })   
+                    }
+            })
         }
+        dibujarTabla();
+        persistir();
     }
+function clkborrar(e){
+    console.log("borrando");
+    eid=e.target.getAttribute('data-id');
+    ciudades.forEach((item,idx ) =>{ 
+        if (item.id==eid)
+            {
+              ciudades.splice(idx,1);
+              dibujarTabla();
+              persistir()
+            }
+    });
+}
+function persistir(){
+    localStorage.setItem("data",JSON.stringify(ciudades)); //conbierto ciudades a texto y lo subo al navegador
+}
+window.addEventListener("load",cargar);
