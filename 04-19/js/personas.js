@@ -24,7 +24,7 @@ pdatos.push({
     cin:"55449165",
     direccion:"pacu cua",
     ciudad_id:1,
-    fecha_nac:"01/11/2002"
+    fecha_nac:"2002-11-01"
 });
 pdatos.push({
     id:2,
@@ -33,7 +33,7 @@ pdatos.push({
     cin:"55117470",
     direccion:"bernandino caballero",
     ciudad_id:2,
-    fecha_nac:"25/04/2004"
+    fecha_nac:"2004-04-25"
 });
 //console.log(pdatos)
 function pcargar(){
@@ -63,29 +63,38 @@ function dibujartabla(){
         e.cin+'</th><th>'+
         e.direccion+'</th><th>'+
         e.ciudad_id+'</th><th>'+
-        e.fecha_nac+'</th><th colspan="2"><button id="'+
-        e.id+'" class="btn btn-warning bnedit ">Editar</button></th><th colspan="2"><button id="'+
+        e.fecha_nac+'</th><th colspan="2"><button data-id="'+
+        e.id+'" class="btn btn-warning btedit ">Editar</button></th><th colspan="2"><button data-id="'+
         e.id+'" class="btn btn-danger btdel ">Borrar</button></th></tr>';
     });
     lista.innerHTML = thead+tbody+tfoot;
     addEventosClk();
 }
-//
+
 function addEventosClk(){
     var btnew=document.getElementById("btnew");
-    btnew.addEventListener("click",clknuevo)
-    var btedit=document.getElementsByClassName('btedit');
-    for(let i=0;i<btedit.length;i++){
-        btedit[i]=addEventListener("click",clkeditar);
+    btnew.addEventListener("click",clknuevo);
+    var bteditar=document.getElementsByClassName('btedit');
+    for(let i=0;i<bteditar.length;i++){
+        bteditar[i]=addEventListener("click",clkeditar);
     }
 
 }
-function clkeditar(){
-    eid=e.target.getAttreibute('data-id');
+function clkeditar(e){
+    eid=e.target.getAttribute('data-id');
+    console.log("clik editar");
     pdatos.forEach((item)=>{
-        console.log(item);
+        if (item.id==eid){
+            console.log(item);
+            document.getElementById("id").value=item.id;
+            document.getElementById("nombre").value=item.nombre;
+            document.getElementById("apellido").value=item.apellido;
+            document.getElementById("cin").value=item.cin;
+            document.getElementById("direccion").value=item.direccion;
+            document.getElementById("ciudad_id").value=item.ciudad_id;
+            document.getElementById("fecha_nac").value=item.fecha_nac;
+        }
     });
-    console.log("editar");
 }
 
 function clknuevo(){

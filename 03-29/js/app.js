@@ -19,7 +19,7 @@ function cargar(){
     else{
         ciudades=JSON.parse(data);  //si existen, se sacan del data a ciudades
     }
-    dibujarTabla()
+    dibujarTabla();
 }
 function dibujarTabla(){
     console.log("dibujando");
