@@ -52,7 +52,7 @@ function pcargar(){
 function dibujartabla(){
     console.log("dibujando");
     var lista= document.getElementById("lista");
-    var thead='<table class="table table-dark "><thead><tr><th>id</th><th>Nombre</th><th>apellido</th><th>cin</th><th>direccion</th><th>ciudad_id</th><th>fecha de nacimiento</th><th colspan="2"><button id="btnew" class="btn btn-primary ">Nuevo</button></th></tr>';
+    var thead='<table class="table table-dark "><thead><tr><td>id</td><td>Nombre</td><td>apellido</td><td>cin</td><td>direccion</td><td>ciudad_id</td><td>fecha de nacimiento</td><td colspan="2"><button id="btnew" class="btn btn-primary ">Nuevo</button></td></tr>';
     var tfoot='</tbody></table>';
     var tbody="";
     pdatos.forEach((e) => {
@@ -64,7 +64,7 @@ function dibujartabla(){
         e.direccion+'</th><th>'+
         e.ciudad_id+'</th><th>'+
         e.fecha_nac+'</th><th colspan="2"><button data-id="'+
-        e.id+'" class="btn btn-warning btedit ">Editar</button></th><th colspan="2"><button data-id="'+
+        e.id+'" class="btn btn-warning btedit ">Editar</button></th>'+'<th colspan="2"><button data-id="'+
         e.id+'" class="btn btn-danger btdel ">Borrar</button></th></tr>';
     });
     lista.innerHTML = thead+tbody+tfoot;
@@ -72,15 +72,32 @@ function dibujartabla(){
 }
 
 function addEventosClk(){
+    /*var btnEditar=document.getElementsByClassName("btedit");
+    for(let i=0;i<btnEditar.length;i++){
+        btnEditar[i]=addEventListener("click",clkeditar);
+    }
     var btnew=document.getElementById("btnew");
     btnew.addEventListener("click",clknuevo);
-    var bteditar=document.getElementsByClassName('btedit');
-    for(let i=0;i<bteditar.length;i++){
-        bteditar[i]=addEventListener("click",clkeditar);
+    var btnBorrar=document.getElementsByClassName("btdel");
+    for (let i=0;i<btnBorrar.lengh;i++){
+        btnBorrar[i].addEventListener("click", clkborrar);
     }
-
+    */
+    var btnEditar = document.getElementsByClassName("btedit");
+    for (let i = 0; i < btnEditar.length; i++) {
+        btnEditar[i].addEventListener("click", clkeditar);
+    }
+    var btnNuevo = document.getElementById("btnew");
+    btnNuevo.addEventListener("click", clknuevo);
+    var btnBorrar = document.getElementsByClassName("btdel");
+    for (let i = 0; i < btnBorrar.length; i++) {
+        btnBorrar[i].addEventListener("click", clkborrar);
+    }
 }
+
+
 function clkeditar(e){
+    console.log(e.target);
     eid=e.target.getAttribute('data-id');
     console.log("clik editar");
     pdatos.forEach((item)=>{
@@ -106,6 +123,18 @@ function clknuevo(){
     document.getElementById("direccion").value ="";
     document.getElementById("ciudad_id").value ="";
     document.getElementById("fecha_nac").value ="";
+}
+
+function clkborrar(e){
+    console.log("borrando");
+    eid=e.target.getAttribute("data-id");
+    pdatos.forEach((item,idx)=>{
+        if (item.id==eid){
+            pdatos.splice(idx,1);
+            dibujartabla();
+            
+        }
+    });
 }
 
 function pguardar(){

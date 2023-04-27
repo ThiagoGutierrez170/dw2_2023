@@ -57,7 +57,7 @@ function addEventosClk()
             btnEditar[i].addEventListener("click", clkeditar);
             //console.log(btnEditar[i]);
         }
-        var btnuevo=document.getElementById("btnew");
+        var btnew=document.getElementById("btnew");
         btnew.addEventListener("click", clknuevo);
         console.log("Los eventos fueron cargados");
         var btnborrar=document.getElementsByClassName("btdel");
