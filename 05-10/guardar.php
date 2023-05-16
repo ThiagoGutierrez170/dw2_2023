@@ -8,6 +8,6 @@ if ($_POST){
         guardarciudad($_POST,$conn);
     }
 }
-header('location:index.php');
+//header('location:index.php');//poner una vez que ya no hayan errores
 ?>
 <p>soy guardar</p>

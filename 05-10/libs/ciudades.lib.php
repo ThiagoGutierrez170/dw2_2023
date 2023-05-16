@@ -8,9 +8,7 @@ function traerciudades($con){
 function guardarciudad($datos,$con){
     //print_r($datos);
     $sql="INSERT INTO ciudades (nombre) VALUES ('".$datos['nombre']."');";
-    echo $sql;
     $con->query($sql);
-    
 }
 
 ?>
