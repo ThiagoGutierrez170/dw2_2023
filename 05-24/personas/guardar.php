@@ -1,6 +1,6 @@
 <?php
  include("../libs/conex.php");
- include("../libs/ciudades.lib.php");
+ include("../libs/personas.lib.php");
  if ($_POST)
  {
     if ($_POST['nombre'])
@@ -12,6 +12,6 @@
         }
         }
  }
- header('Location:../index.php? mod=ciudades');
+ header('Location:../index.php? mod=personas');
  //<p>soy guardar</p>
 ?>

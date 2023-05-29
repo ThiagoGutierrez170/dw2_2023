@@ -1,7 +1,7 @@
 <?php
 // include("libs/conex.php");
 // include("libs/ciudades.lib.php");
-$datos=traerCiudades($conn);
+$datos=traerPersonas($conn);
 //echo "<pre>";
 // foreach($datos as $d)
 // {
@@ -14,30 +14,40 @@ $datos=traerCiudades($conn);
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ciudades</title>
+    <title>Personas</title>
 </head>
 <body>
-    <h1>Ciudades</h1>
-    <a href="index.php?mod=newciudad">Nuevo</a>
+    <h1>Personas</h1>
+    <a href="index.php?mod=newpersona">Nuevo</a>
     <table border=1>
         <thead>
             <tr>
                 <th>Id</th>
                 <th>Nombre</th>
+                <th>Apellido</th>
+                <th>CIN</th>
+                <th>Direccion</th>
+                <th>Fecha de nacimiento</th>
+                <th>Ciudad</th>
                 <th>Editar</th>
                 <th>Borrar</th>
             </tr>
         </thead>
         <tbody>
-        
+           
                 <?php
                 foreach($datos as $d) {
                 ?>
              <tr>    
                 <td><?php echo $d['id'];  ?> </td>
                 <td><?php echo $d['nombre'];  ?></td>
-                <td><a href="index.php?mod=edtciudad&&id=<?php  echo $d['id'];  ?>">Editar</a> </td>
-                <td><a href="index.php?mod=delciudad&&id=<?php  echo $d['id'];  ?>">Borrar</a> </td>
+                <td><?php echo $d['apellido'];  ?> </td>
+                <td><?php echo $d['cin'];  ?> </td>
+                <td><?php echo $d['direccion'];  ?> </td>
+                <td><?php echo $d['fecha_nac'];  ?> </td>
+                <td><?php echo $d['ciudad_id'];  ?> </td>
+                <td><a href="index.php?mod=edtpersona&&id=<?php  echo $d['id'];  ?>">Editar</a> </td>
+                <td><a href="index.php?mod=delpersona&&id=<?php  echo $d['id'];  ?>">Borrar</a> </td>
             </tr>
                <?php 
                }
