@@ -28,7 +28,7 @@ $datos=traerPersonas($conn);
                 <th>CIN</th>
                 <th>Direccion</th>
                 <th>Fecha de nacimiento</th>
-                <th>Ciudad</th>
+                <th>Ciudad ID</th>
                 <th>Editar</th>
                 <th>Borrar</th>
             </tr>

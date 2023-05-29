@@ -24,30 +24,32 @@ include("comun/includes.php");
         </div>
             <div class="col col-8 bg-light"> 
                 <?php
-                if ($_GET['mod']=="ciudades")  {
-                    include("ciudades/index.php");
-                }
-                if ($_GET['mod']=="edtciudad")  {
-                    include("ciudades/nuevo.php");
-                }
-                if ($_GET['mod']=="delciudad")  {
-                    include("ciudades/borrar.php");
-                }
-                if ($_GET['mod']=="newciudad")  {
-                    include("ciudades/nuevo.php");
-                }
+                if(isset($_GET['mod'])){
+                    if ($_GET['mod']=="ciudades")  {
+                        include("ciudades/index.php");
+                    }
+                    if ($_GET['mod']=="edtciudad")  {
+                        include("ciudades/nuevo.php");
+                    }
+                    if ($_GET['mod']=="delciudad")  {
+                        include("ciudades/borrar.php");
+                    }
+                    if ($_GET['mod']=="newciudad")  {
+                        include("ciudades/nuevo.php");
+                    }
 
-                if ($_GET['mod']=="personas")  {
-                    include("personas/index.php");
-                }
-                if ($_GET['mod']=="edtpersona")  {
-                    include("personas/nuevo.php");
-                }
-                if ($_GET['mod']=="delpersona")  {
-                    include("personas/borrar.php");
-                }
-                if ($_GET['mod']=="newpersona")  {
-                    include("personas/nuevo.php");
+                    if ($_GET['mod']=="personas")  {
+                        include("personas/index.php");
+                    }
+                    if ($_GET['mod']=="edtpersona")  {
+                        include("personas/nuevo.php");
+                    }
+                    if ($_GET['mod']=="delpersona")  {
+                        include("personas/borrar.php");
+                    }
+                    if ($_GET['mod']=="newpersona")  {
+                        include("personas/nuevo.php");
+                    }
                 }
                 ?>
             </div>

@@ -10,14 +10,14 @@ function traerPersona($id,$con)
     $filas=$con->query($sql);
     return $filas;
 }
-function agregarPersonas($datos,$con)
+function agregarPersona($datos,$con)
 {
     //INSERT INTO `personas`(`id`, `nombre`, `apellido`, `cin`, `direccion`,
     // `fecha_nac`, `ciudad_id`) VALUES ('[value-1]',
     //'[value-2]','[value-3]','[value-4]','[value-5]','[value-6]','[value-7]')
    $sql="INSERT INTO personas (nombre,apellido,cin,direccion,fecha_nac,ciudad_id) VALUES ('".
-   $datos['nombre'].",".$datos['apellido'].",".$datos['cin'].",".
-   $datos['direccion'].",".$datos['fecha_nac'].",".$datos['ciudad_id'].",');";
+   $datos['nombre']."','".$datos['apellido']."','".$datos['cin']."','".
+   $datos['direccion']."','".$datos['fecha_nac']."',".$datos['ciudad_id'].");";
    $con->query($sql);
 }
 function editarPersona($datos,$con)

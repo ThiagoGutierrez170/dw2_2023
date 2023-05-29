@@ -2,7 +2,7 @@
 // include("../libs/conex.php");
 // include("../libs/ciudades.lib.php");
 $titulo="Insertar Ciudad";
-if ($_GET and $_GET['id']){
+if ($_GET and isset($_GET['id'])){
        // echo $_GET['id'];
         $titulo="Editar Ciudad";
         $rs=traerCiudad($_GET['id'],$conn);

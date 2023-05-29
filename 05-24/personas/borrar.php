@@ -4,7 +4,7 @@
 if ($_GET and $_GET['id'])
     {
        // echo $_GET['id'];
-        borrarPersonas($_GET['id'],$conn);
+        borrarPersona($_GET['id'],$conn);
         //echo "<pre>";
         //$dato=$rs->fetch_assoc();
         //echo "</pre>";
