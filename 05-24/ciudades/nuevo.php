@@ -1,6 +1,4 @@
 <?php
-// include("../libs/conex.php");
-// include("../libs/ciudades.lib.php");
 $titulo="Insertar Ciudad";
 if ($_GET and isset($_GET['id'])){
        // echo $_GET['id'];
@@ -27,16 +25,15 @@ if ($_GET and isset($_GET['id'])){
 <body>
     <h3><?php echo $titulo; ?></h3>
     <div>
-        <form action="ciudades/guardar.php" method="post">
+        <form action="index.php?mod=confciudad" method="post">
            <label>Nonbre de la ciudad</label><br>
            <input type="hidden" id="id" name="id" value="<?php 
                 echo $dato['id'];
             ?>" />
            <input type="text" id="nombre" name="nombre" required value="<?php 
-          // if (isset($dato['nombre'])) { echo $dato['nombre']; }
                 echo $dato['nombre'];
             ?>" /> <br>
-           <button type="submit">Enviar</button>
+           <button type="submit">enviar</button>
            <a href="index.php?mod=ciudades">Volver</a>    
 
         </form>

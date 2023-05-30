@@ -37,6 +37,9 @@ include("comun/includes.php");
                     if ($_GET['mod']=="newciudad")  {
                         include("ciudades/nuevo.php");
                     }
+                    if ($_GET['mod']=="confciudad")  {
+                        include("ciudades/verificar.php");
+                    }
 
                     if ($_GET['mod']=="personas")  {
                         include("personas/index.php");
