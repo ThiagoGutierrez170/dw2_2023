@@ -51,7 +51,7 @@ $datos=traerCiudades($conn);
                 <td><?php echo $d['id'];  ?> </td>
                 <td><?php echo $d['nombre'];  ?></td>
                 <td><a href="index.php?mod=edtciudad&&id=<?php  echo $d['id'];  ?>">Editar</a> </td>
-                <td><a href="index.php?mod=delciudad&&id=<?php  echo $d['id'];  ?>">Borrar</a> </td>
+                <td><a href="index.php?mod=confciudad&&delid=<?php  echo $d['id'];  ?>&&delnombre=<?php  echo $d['nombre'];  ?>">Borrar</a> </td>
             </tr>
                <?php 
                }
