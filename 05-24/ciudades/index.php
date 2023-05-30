@@ -22,15 +22,29 @@ $datos=traerCiudades($conn);
     <table border=1>
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Nombre</th>
+                <th><a href="index.php?mod=ciudades&&orden=id">Id</a></th>
+                <th><a href="index.php?mod=ciudades&&orden=nombre">Nombre</a></th>
                 <th>Editar</th>
                 <th>Borrar</th>
             </tr>
         </thead>
         <tbody>
-        
                 <?php
+                if(isset($_GET['orden'])){
+                    if (($_GET['orden'])=="nombre")  {
+                        $item='nombre';
+                    }
+                    if (($_GET['orden'])=="id")  {
+                        $item='id';
+                    }
+                    $resultado = $conn->query("SELECT id, nombre FROM ciudades");
+                    // Convertir el objeto mysqli_result en un arreglo
+                    $datos = $resultado->fetch_all(MYSQLI_ASSOC);
+                    // Extraer la columna 
+                    $columnaId = array_column($datos, $item);
+                    // Ordenar el arreglo $datos basado en la columna 'id' o nombre
+                    array_multisort($columnaId, SORT_ASC, $datos);
+                }
                 foreach($datos as $d) {
                 ?>
              <tr>    

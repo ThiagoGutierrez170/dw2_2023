@@ -22,11 +22,11 @@ $datos=traerPersonas($conn);
     <table border=1>
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Nombre</th>
-                <th>Apellido</th>
-                <th>CIN</th>
-                <th>Direccion</th>
+                <th><a href="index.php?mod=personas&&orden=id">Id</a></th>
+                <th><a href="index.php?mod=personas&&orden=nombre">Nombre</a></th>
+                <th><a href="index.php?mod=personas&&orden=apellido">Apellido</a></th>
+                <th><a href="index.php?mod=personas&&orden=cin">CIN</a></th>
+                <th><a href="index.php?mod=personas&&orden=direccion">Direccion</a></th>
                 <th>Fecha de nacimiento</th>
                 <th>Ciudad ID</th>
                 <th>Editar</th>
@@ -36,6 +36,34 @@ $datos=traerPersonas($conn);
         <tbody>
            
                 <?php
+                if(isset($_GET['orden'])){
+                    if (($_GET['orden'])=="nombre")  {
+                        $item='nombre';
+                    }
+                    if (($_GET['orden'])=="apellido")  {
+                        $item='apellido';
+                    }
+                    if (($_GET['orden'])=="cin")  {
+                        $item='cin';
+                    }
+                    if (($_GET['orden'])=="direccion")  {
+                        $item='direccion';
+                    }
+                    if (($_GET['orden'])=="id")  {
+                        $item='id';
+                    }
+                    
+                    $resultado = $conn->query("SELECT id, nombre, apellido, cin, direccion, fecha_nac, ciudad_id FROM personas");
+
+                    // Convertir el objeto mysqli_result en un arreglo
+                    $datos = $resultado->fetch_all(MYSQLI_ASSOC);
+
+                    // Extraer la columna 'id' en un arreglo separado
+                    $columnaId = array_column($datos, $item);
+
+                    // Ordenar el arreglo $datos basado en la columna 'id'
+                    array_multisort($columnaId, SORT_ASC, $datos);
+                }
                 foreach($datos as $d) {
                 ?>
              <tr>    
