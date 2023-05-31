@@ -10,5 +10,5 @@ if ($_POST and $_POST['id'])
         //echo "</pre>";
     }
   header('Location:../index.php?mod=ciudades');   
-    
+?>
     

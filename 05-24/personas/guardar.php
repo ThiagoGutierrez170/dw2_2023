@@ -10,6 +10,7 @@
         }  else {
         editarPersona($_POST,$conn);
         }
+        header('Location:../index.php? mod=personas');
         }
  }
  header('Location:../index.php? mod=personas');

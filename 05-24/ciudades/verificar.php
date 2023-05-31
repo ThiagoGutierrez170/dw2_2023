@@ -20,8 +20,6 @@ if (isset($_GET['delid']) && isset($_GET['delnombre'])) {
         <button type="submit">Sí</button>
     </form>
     <a href="index.php?mod=ciudades">Volver</a>
-    <p><?php echo $delid; ?></p>
-    <p><?php echo $delnombre; ?></p>
     </body>
     </html>
     <?php

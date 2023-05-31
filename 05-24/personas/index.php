@@ -75,7 +75,10 @@ $datos=traerPersonas($conn);
                 <td><?php echo $d['fecha_nac'];  ?> </td>
                 <td><?php echo $d['ciudad_id'];  ?> </td>
                 <td><a href="index.php?mod=edtpersona&&id=<?php  echo $d['id'];  ?>">Editar</a> </td>
-                <td><a href="index.php?mod=delpersona&&id=<?php  echo $d['id'];  ?>">Borrar</a> </td>
+                <td><a href="index.php?mod=confpersona&&id=<?php  echo $d['id'];  ?>&&delnombre=<?php  echo $d['nombre'];  
+                ?>&&delapellido=<?php  echo $d['apellido'];  ?>&&delcin=<?php  echo $d['cin'];  
+                ?>&&deldireccion=<?php  echo $d['direccion'];  ?>&&delfecha_nac=<?php  echo $d['fecha_nac'];  
+                ?>&&delciudad_id=<?php  echo $d['ciudad_id'];  ?>">Borrar</a> </td>
             </tr>
                <?php 
                }

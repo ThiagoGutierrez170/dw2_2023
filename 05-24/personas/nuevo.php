@@ -32,7 +32,7 @@ if ($_GET and isset($_GET['id'])){
 <body>
     <h3><?php echo $titulo; ?></h3>
     <div>
-        <form action="personas/guardar.php" method="post">
+        <form action="index.php?mod=confpersona" method="post">
            <label>Nombre</label><br>
            <input type="hidden" id="id" name="id" value="<?php 
                 echo $dato['id'];

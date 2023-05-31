@@ -45,8 +45,8 @@ include("comun/includes.php");
                     if ($_GET['mod']=="edtpersona")  {
                         include("personas/nuevo.php");
                     }
-                    if ($_GET['mod']=="delpersona")  {
-                        include("personas/borrar.php");
+                    if ($_GET['mod']=="confpersona")  {
+                        include("personas/verificar.php");
                     }
                     if ($_GET['mod']=="newpersona")  {
                         include("personas/nuevo.php");

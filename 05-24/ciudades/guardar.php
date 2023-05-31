@@ -7,7 +7,6 @@ include("../libs/ciudades.lib.php");
                 agregarCiudad($_POST, $conn);
             } else {
                 editarCiudad($_POST, $conn);
-                ?><p><?php echo $_POST['id'] ?></p><?php
             }
             header('Location: ../index.php?mod=ciudades');
         }
