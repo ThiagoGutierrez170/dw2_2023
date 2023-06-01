@@ -1,14 +1,17 @@
 <?php
-if (isset($_GET['id']) && isset($_GET['delnombre']) && isset($_GET['delapellido'])
-&& isset($_GET['delcin']) && isset($_GET['deldireccion']) && isset($_GET['delfecha_nac'])
-&& isset($_GET['delciudad_id'])) {
-    $valor1=$_GET['id'];
-    $valor2=$_GET['delnombre'];
-    $valor3=$_GET['delapellido'];
-    $valor4=$_GET['delcin'];
-    $valor5=$_GET['deldireccion'];
-    $valor6=$_GET['delfecha_nac'];
-    $valor7=$_GET['delciudad_id'];
+if (isset($_GET['id'])) {
+    $titulo="Editar Personas";
+    $rs=traerPersona($_GET['id'],$conn);
+    //echo "<pre>";
+    $dato=$rs->fetch_assoc();
+    // echo "</pre>";
+    $valor1=$dato['id'];
+    $valor2=$dato['nombre'];
+    $valor3=$dato['apellido'];
+    $valor4=$dato['cin'];
+    $valor5=$dato['direccion'];
+    $valor6=$dato['fecha_nac'];
+    $valor7=$dato['ciudad_id'];
 ?>
     <!DOCTYPE html>
     <html lang="en">

@@ -1,7 +1,14 @@
 <?php
-if (isset($_GET['delid']) && isset($_GET['delnombre'])) {
-    $delid = $_GET['delid'];
-    $delnombre = $_GET['delnombre'];
+
+ if ($_GET and isset($_GET['id'])){
+    // echo $_GET['id'];
+     $titulo="Editar Ciudad";
+     $rs=traerCiudad($_GET['id'],$conn);
+     //echo "<pre>";
+     $dato=$rs->fetch_assoc();
+    // echo "</pre>";
+    $delid = $dato['id'];
+    $delnombre = $dato['nombre'];
 ?>
     <!DOCTYPE html>
     <html lang="en">

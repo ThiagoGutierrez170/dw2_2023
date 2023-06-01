@@ -28,4 +28,10 @@ function borrarCiudad($id,$con)
     $filas=$con->query($sql);
     return $filas;
 }
+function buscarCiudad($nombre,$con)
+{
+    $sql= "SELECT `id`, `nombre` FROM `ciudades` WHERE nombre='" . $nombre . "'";
+    $filas=$con->query($sql);
+    return $filas;
+}
 ?>

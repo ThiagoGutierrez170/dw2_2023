@@ -31,7 +31,9 @@ include("comun/includes.php");
                     if ($_GET['mod']=="edtciudad")  {
                         include("ciudades/nuevo.php");
                     }
-                    
+                    if ($_GET['mod']=="busciudad")  {
+                        include("ciudades/buscar.php");
+                    }
                     if ($_GET['mod']=="newciudad")  {
                         include("ciudades/nuevo.php");
                     }

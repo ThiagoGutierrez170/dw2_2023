@@ -18,7 +18,12 @@ $datos=traerCiudades($conn);
 </head>
 <body>
     <h1>Ciudades</h1>
-    <a href="index.php?mod=newciudad">Nuevo</a>
+        <form action="index.php?mod=busciudad" method="post">
+           <label>Nonbre de la ciudad: </label>
+           <input type="text" id="nombre" name="nombre" required value="" />
+           <button type="submit">buscar</button>
+        </form>
+        <a href="index.php?mod=newciudad">Nuevo</a>
     <table border=1>
         <thead>
             <tr>
@@ -45,16 +50,17 @@ $datos=traerCiudades($conn);
                     // Ordenar el arreglo $datos basado en la columna 'id' o nombre
                     array_multisort($columnaId, SORT_ASC, $datos);
                 }
+                
                 foreach($datos as $d) {
                 ?>
              <tr>    
                 <td><?php echo $d['id'];  ?> </td>
                 <td><?php echo $d['nombre'];  ?></td>
                 <td><a href="index.php?mod=edtciudad&&id=<?php  echo $d['id'];  ?>">Editar</a> </td>
-                <td><a href="index.php?mod=confciudad&&delid=<?php  echo $d['id'];  ?>&&delnombre=<?php  echo $d['nombre'];  ?>">Borrar</a> </td>
+                <td><a href="index.php?mod=confciudad&&id=<?php  echo $d['id'];  ?>">Borrar</a> </td>
             </tr>
                <?php 
-               }
+                }
                ?> 
         </tbody>    
     </table>
