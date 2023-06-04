@@ -22,8 +22,8 @@
     <h1>¿Está seguro de borrar?</h1>
     <form id="myForm" action="ciudades/borrar.php" method="post">
         <input type="hidden" name="seleccion" value="si">
-        <input type="text" id="id" name="id" value="<?php echo $delid; ?>">
-        <input type="text" id="nombre" name="nombre" value="<?php echo $delnombre; ?>">
+        <input type="text" id="id" name="id" value="<?php echo $delid; ?>" readonly>
+        <input type="text" id="nombre" name="nombre" value="<?php echo $delnombre; ?>" readonly>
         <button type="submit">Sí</button>
     </form>
     <a href="index.php?mod=ciudades">Volver</a>
@@ -49,8 +49,8 @@ else{
 <h1>¿Está seguro de hacer cambios?</h1>
     <form id="myForm" action="ciudades/guardar.php" method="post">
         <input type="hidden" name="seleccion" value="si">
-        <input type="text" id="id" name="id" value="<?php echo $valor1; ?>">
-        <input type="text" id="nombre" name="nombre" value="<?php echo $valor2; ?>">
+        <input type="text" id="id" name="id" value="<?php echo $valor1; ?>" readonly>
+        <input type="text" id="nombre" name="nombre" value="<?php echo $valor2; ?>" readonly>
         <button type="submit">Sí</button>
     </form>
     <a href="index.php?mod=ciudades">Volver</a>

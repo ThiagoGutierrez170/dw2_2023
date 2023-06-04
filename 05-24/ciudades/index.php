@@ -17,9 +17,15 @@ $datos=traerCiudades($conn);
     <title>Ciudades</title>
 </head>
 <body>
+<?php
+if (isset($_GET['b'])) {
+    $mensaje ="se ha borrado correctamente";
+    echo '<script>alert("' . $mensaje . '");</script>';
+}
+?>
     <h1>Ciudades</h1>
         <form action="index.php?mod=busciudad" method="post">
-           <label>Nonbre de la ciudad: </label>
+           <label>Nombre de la ciudad: </label>
            <input type="text" id="nombre" name="nombre" required value="" />
            <button type="submit">buscar</button>
         </form>

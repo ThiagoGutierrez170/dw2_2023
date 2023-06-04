@@ -9,6 +9,6 @@ if ($_POST and $_POST['id'])
         //$dato=$rs->fetch_assoc();
         //echo "</pre>";
     }
-  header('Location:../index.php?mod=personas');   
+  header('Location:../index.php?mod=personas&b');   
   //<p>soy borrar</p>
     ?>

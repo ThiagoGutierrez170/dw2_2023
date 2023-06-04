@@ -20,11 +20,17 @@ $datos=traerCiudades($conn);
     <h1>Ciudades</h1>
     <a href="index.php?mod=ciudades">Volver</a>
     <form action="index.php?mod=busciudad" method="post">
-           <label>Nonbre de la ciudad: </label>
+           <label>Nombre de la ciudad: </label>
            <input type="text" id="nombre" name="nombre" required value="" />
            <button type="submit">buscar</button>
         </form><br>
     <table border=1>
+    <?php
+    $rs = buscarCiudad($_POST['nombre'], $conn);
+    $dato = $rs->fetch_assoc();
+    if (!isset($dato['id'])) { ?>
+        <h2 style="color: red">No se encontró ninguna coincidencia en la búsqueda</h2>
+    <?php } else { ?>
         <thead>
             <tr>
                 <th>Id</th>
@@ -34,16 +40,14 @@ $datos=traerCiudades($conn);
             </tr>
         </thead>
         <tbody>
-                <?php
-                    $rs = buscarCiudad($_POST['nombre'], $conn);
-                    $dato = $rs->fetch_assoc();
-                ?>
-                    <tr>    
-                        <td><?php echo $dato['id']; ?></td>
-                        <td><?php echo $dato['nombre']; ?></td>
-                        <td><a href="index.php?mod=edtciudad&&id=<?php echo $dato['id']; ?>">Editar</a></td>
-                        <td><a href="index.php?mod=confciudad&&id=<?php echo $dato['nombre']; ?>">Borrar</a></td>
-                    </tr>
+        
+        <tr>    
+            <td><?php echo $dato['id']; ?></td>
+            <td><?php echo $dato['nombre']; ?></td>
+            <td><a href="index.php?mod=edtciudad&&id=<?php echo $dato['id']; ?>">Editar</a></td>
+            <td><a href="index.php?mod=confciudad&&id=<?php echo $dato['nombre']; ?>">Borrar</a></td>
+        </tr>
+    <?php } ?>     
         </tbody>    
     </table>
 </body>

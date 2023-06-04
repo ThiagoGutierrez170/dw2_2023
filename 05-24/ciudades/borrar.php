@@ -9,6 +9,6 @@ if ($_POST and $_POST['id'])
         //$dato=$rs->fetch_assoc();
         //echo "</pre>";
     }
-  header('Location:../index.php?mod=ciudades');   
+  header('Location:../index.php?mod=ciudades&b');   
 ?>
     

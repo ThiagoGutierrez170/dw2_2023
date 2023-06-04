@@ -26,30 +26,30 @@ if (isset($_GET['id'])) {
     <form id="myForm" action="personas/borrar.php" method="post">
     <input type="hidden" id="id" name="id" value="<?php 
                 echo $valor1;
-            ?>" />
+            ?>"  readonly/>
            <input type="text" id="nombre" name="nombre"  value="<?php 
                 echo $valor2;
-            ?>" /> <br>
+            ?>"  readonly/> <br>
             <label>Apellido</label><br>
             <input type="text" id="apellido" name="apellido"  value="<?php 
                 echo $valor3;
-            ?>" /> <br>
+            ?>"  readonly/> <br>
             <label>CIN</label><br>
             <input type="text" id="cin" name="cin"  value="<?php 
                 echo $valor4;
-            ?>" /> <br>
+            ?>"  readonly/> <br>
             <label>Direccion</label><br>
             <input type="text" id="direccion" name="direccion"  value="<?php 
                 echo$valor5;
-            ?>" /> <br>
+            ?>"  readonly/> <br>
             <label>Fecha de nacimiento</label><br>
             <input type="date" id="fecha_nac" name="fecha_nac"  value="<?php 
                 echo $valor6;
-            ?>" /> <br>
+            ?>"  readonly/> <br>
             <label>Ciudad ID</label><br>
             <input type="number" id="ciudad_id" name="ciudad_id"  value="<?php 
                 echo $valor7;
-            ?>" /> <br>
+            ?>"  readonly/> <br>
             <button type="submit">Sí</button>
     </form>
     <a href="index.php?mod=personas">Volver</a>
@@ -84,30 +84,30 @@ else{
         
            <input type="hidden" id="id" name="id" value="<?php 
                 echo $valor1;
-            ?>" />
+            ?>"  readonly/>
            <input type="text" id="nombre" name="nombre" required value="<?php 
                 echo $valor2;
-            ?>" /> <br>
+            ?>"  readonly/> <br>
             <label>Apellido</label><br>
             <input type="text" id="apellido" name="apellido" required value="<?php 
                 echo $valor3;
-            ?>" /> <br>
+            ?>"  readonly/> <br>
             <label>CIN</label><br>
             <input type="text" id="cin" name="cin" required value="<?php 
                 echo $valor4;
-            ?>" /> <br>
+            ?>"  readonly/> <br>
             <label>Direccion</label><br>
             <input type="text" id="direccion" name="direccion" required value="<?php 
                 echo$valor5;
-            ?>" /> <br>
+            ?>"  readonly/> <br>
             <label>Fecha de nacimiento</label><br>
             <input type="date" id="fecha_nac" name="fecha_nac" required value="<?php 
                 echo $valor6;
-            ?>" /> <br>
+            ?>"  readonly/> <br>
             <label>Ciudad ID</label><br>
             <input type="number" id="ciudad_id" name="ciudad_id" required value="<?php 
                 echo $valor7;
-            ?>" /> <br>
+            ?>"  readonly/> <br>
            <button type="submit">Sí</button>
     </form>
     <a href="index.php?mod=personas">Volver</a>

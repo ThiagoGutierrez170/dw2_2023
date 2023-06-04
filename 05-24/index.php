@@ -53,6 +53,9 @@ include("comun/includes.php");
                     if ($_GET['mod']=="newpersona")  {
                         include("personas/nuevo.php");
                     }
+                    if ($_GET['mod']=="buspersona")  {
+                        include("personas/buscar.php");
+                    }
                 }
                 ?>
             </div>

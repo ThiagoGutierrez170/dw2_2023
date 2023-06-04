@@ -19,7 +19,16 @@ if ($_GET and isset($_GET['id'])){
         $dato['fecha_nac']="";
         $dato['ciudad_id']="";
     }
-
+    if ( isset($_GET['id']) && $_GET['id'] == -1){
+        $dato['id']=-1;
+        $dato['nombre']="";
+        $dato['apellido']="";
+        $dato['cin']="";
+        $dato['direccion']="";
+        $dato['fecha_nac']="";
+        $dato['ciudad_id']="";
+    }
+    $cdatos=traerCiudades($conn);
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -32,6 +41,13 @@ if ($_GET and isset($_GET['id'])){
 <body>
     <h3><?php echo $titulo; ?></h3>
     <div>
+        <?php 
+            if (isset($_GET['errores'])){
+                    ?>
+                    <h4 style="color: red"><?php echo  $_GET['errores']; ?></h4>
+                    <?php
+            }
+        ?>
         <form action="index.php?mod=confpersona" method="post">
            <label>Nombre</label><br>
            <input type="hidden" id="id" name="id" value="<?php 
@@ -62,10 +78,16 @@ if ($_GET and isset($_GET['id'])){
                 echo $dato['fecha_nac'];
             ?>" /> <br>
             <label>Ciudad ID</label><br>
-            <input type="number" id="ciudad_id" name="ciudad_id" required value="<?php 
-          // if (isset($dato['nombre'])) { echo $dato['nombre']; }
-                echo $dato['ciudad_id'];
-            ?>" /> <br>
+            <select name="ciudad_id" id="ciudad_id">
+    <option value="0">Seleccionar</option>
+    <?php
+    foreach ($cdatos as $c) {
+        ?>
+        <option value="<?php echo $c["id"]; ?>" <?php if ($c["id"] == $dato['ciudad_id']) { echo "selected"; } ?>><?php echo $c["nombre"]; ?></option>
+    <?php
+    }
+    ?>
+</select> <br>
             
            <button type="submit">Enviar</button>
            <a href="index.php?mod=personas">Volver</a>    

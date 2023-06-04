@@ -17,7 +17,24 @@ $datos=traerPersonas($conn);
     <title>Personas</title>
 </head>
 <body>
+<?php
+if (isset($_GET['b'])) {
+    $mensaje ="se ha borrado correctamente";
+    echo '<script>alert("' . $mensaje . '");</script>';
+}
+?>
     <h1>Personas</h1>
+        <form action="index.php?mod=buspersona" method="post">
+           <label><h3>Buscador: </h3></label>
+           <select name="tipo" id="tipo">
+            <option value="nombre">Por Nombre</option>
+            <option value="apellido">Por Apellido</option>
+            <option value="cin">Por CIN</option>
+            <option value="direccion">Por direccion</option>
+           </select>
+           <input type="text" id="nombre" name="nombre" required value="" />
+           <button type="submit">buscar</button>
+        </form>
     <a href="index.php?mod=newpersona">Nuevo</a>
     <table border=1>
         <thead>
@@ -73,7 +90,7 @@ $datos=traerPersonas($conn);
                 <td><?php echo $d['cin'];  ?> </td>
                 <td><?php echo $d['direccion'];  ?> </td>
                 <td><?php echo $d['fecha_nac'];  ?> </td>
-                <td><?php echo $d['ciudad_id'];  ?> </td>
+                <td><?php echo traerCiudadNombre($d['ciudad_id'],$conn);  ?> </td>
                 <td><a href="index.php?mod=edtpersona&&id=<?php  echo $d['id'];  ?>">Editar</a> </td>
                 <td><a href="index.php?mod=confpersona&&id=<?php  echo $d['id'];  ?>">Borrar</a> </td>
             </tr>

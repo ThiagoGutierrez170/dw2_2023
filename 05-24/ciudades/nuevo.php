@@ -12,6 +12,10 @@ if ($_GET and isset($_GET['id'])){
         $dato['id']=-1;
         $dato['nombre']="";
     }
+    if ( isset($_GET['id']) && $_GET['id'] == -1){
+        $dato['id']=-1;
+        $dato['nombre']="";
+    }
 
 ?>
 <!DOCTYPE html>
@@ -25,6 +29,13 @@ if ($_GET and isset($_GET['id'])){
 <body>
     <h3><?php echo $titulo; ?></h3>
     <div>
+        <?php 
+            if (isset($_GET['errores'])){
+                    ?>
+                    <h4 style="color: red"><?php echo  $_GET['errores']; ?></h4>
+                    <?php
+            }
+        ?>
         <form action="index.php?mod=confciudad" method="post">
            <label>Nonbre de la ciudad</label><br>
            <input type="hidden" id="id" name="id" value="<?php 
