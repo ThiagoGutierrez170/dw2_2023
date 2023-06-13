@@ -19,7 +19,7 @@ $datos=traerPersonas($conn);
 <body>
     <h1>Personas</h1>
     <a href="index.php?mod=personas">Volver</a>
-        <form action="index.php?mod=busperonas" method="post">
+        <form action="index.php?mod=buspersona" method="post">
            <label><h3>Buscador: </h3></label>
            <select name="tipo" id="tipo">
             <option value="nombre">Por Nombre</option>
@@ -31,7 +31,7 @@ $datos=traerPersonas($conn);
            <button type="submit">buscar</button>
         </form>
     
-    <table border=1>
+    <table border=1 class="table table-dark table-striped">
                 <?php
                     $rs = buscarPersona( $_POST['tipo'],$_POST['nombre'], $conn);
                     $dato = $rs->fetch_assoc();
@@ -41,11 +41,11 @@ $datos=traerPersonas($conn);
                     <a href="index.php?mod=newpersona">Nuevo</a>
         <thead>
             <tr>
-                <th><a href="index.php?mod=personas&&orden=id">Id</a></th>
-                <th><a href="index.php?mod=personas&&orden=nombre">Nombre</a></th>
-                <th><a href="index.php?mod=personas&&orden=apellido">Apellido</a></th>
-                <th><a href="index.php?mod=personas&&orden=cin">CIN</a></th>
-                <th><a href="index.php?mod=personas&&orden=direccion">Direccion</a></th>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>CIN</th>
+                <th>Direccion</th>
                 <th>Fecha de nacimiento</th>
                 <th>Ciudad ID</th>
                 <th>Editar</th>
@@ -54,18 +54,23 @@ $datos=traerPersonas($conn);
         </thead>
         <tbody>
            
-                
+        <?php  
+        foreach($datos as $d) {
+                ?>
              <tr>    
-                <td><?php echo $dato['id'];  ?> </td>
-                <td><?php echo $dato['nombre'];  ?></td>
-                <td><?php echo $dato['apellido'];  ?> </td>
-                <td><?php echo $dato['cin'];  ?> </td>
-                <td><?php echo $dato['direccion'];  ?> </td>
-                <td><?php echo $dato['fecha_nac'];  ?> </td>
-                <td><?php echo traerCiudadNombre($dato['ciudad_id'],$conn);  ?> </td>
-                <td><a href="index.php?mod=edtpersona&&id=<?php  echo $dato['id'];  ?>">Editar</a> </td>
-                <td><a href="index.php?mod=confpersona&&id=<?php  echo $dato['id'];  ?>">Borrar</a> </td>
+                <td><?php echo $d['id'];  ?> </td>
+                <td><?php echo $d['nombre'];  ?></td>
+                <td><?php echo $d['apellido'];  ?> </td>
+                <td><?php echo $d['cin'];  ?> </td>
+                <td><?php echo $d['direccion'];  ?> </td>
+                <td><?php echo $d['fecha_nac'];  ?> </td>
+                <td><?php echo traerCiudadNombre($d['ciudad_id'],$conn);  ?> </td>
+                <td><a href="index.php?mod=edtpersona&&id=<?php  echo $d['id'];  ?>">Editar</a> </td>
+                <td><a href="index.php?mod=confpersona&&id=<?php  echo $d['id'];  ?>">Borrar</a> </td>
             </tr>
+               <?php 
+               }
+               ?> 
         <?php } ?> 
         </tbody>    
     </table>

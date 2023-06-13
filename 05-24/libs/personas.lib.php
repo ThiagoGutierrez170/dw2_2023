@@ -80,7 +80,7 @@ function traerCiudadNombre($id,$con)
 function buscarPersona($tipo,$nombre,$con)
 {
     $nombre=trim($nombre);
-    $sql= "SELECT * FROM `personas` WHERE ". $tipo."='" . $nombre . "'";
+    $sql= "SELECT * FROM `personas` WHERE ". $tipo." like '%" . $nombre . "%'";
     $filas=$con->query($sql);
     return $filas;
 }

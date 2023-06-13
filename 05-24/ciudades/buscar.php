@@ -24,7 +24,7 @@ $datos=traerCiudades($conn);
            <input type="text" id="nombre" name="nombre" required value="" />
            <button type="submit">buscar</button>
         </form><br>
-    <table border=1>
+    <table border=1 class="table table-dark table-striped">
     <?php
     $rs = buscarCiudad($_POST['nombre'], $conn);
     $dato = $rs->fetch_assoc();
@@ -40,13 +40,18 @@ $datos=traerCiudades($conn);
             </tr>
         </thead>
         <tbody>
-        
-        <tr>    
-            <td><?php echo $dato['id']; ?></td>
-            <td><?php echo $dato['nombre']; ?></td>
-            <td><a href="index.php?mod=edtciudad&&id=<?php echo $dato['id']; ?>">Editar</a></td>
-            <td><a href="index.php?mod=confciudad&&id=<?php echo $dato['nombre']; ?>">Borrar</a></td>
-        </tr>
+        <?php
+        foreach($datos as $d) {
+                ?>
+             <tr>    
+                <td><?php echo $d['id'];  ?> </td>
+                <td><?php echo $d['nombre'];  ?></td>
+                <td><a href="index.php?mod=edtciudad&&id=<?php  echo $d['id'];  ?>">Editar</a> </td>
+                <td><a href="index.php?mod=confciudad&&id=<?php  echo $d['id'];  ?>">Borrar</a> </td>
+            </tr>
+               <?php 
+                }
+               ?> 
     <?php } ?>     
         </tbody>    
     </table>

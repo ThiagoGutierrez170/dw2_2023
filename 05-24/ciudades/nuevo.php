@@ -14,7 +14,7 @@ if ($_GET and isset($_GET['id'])){
     }
     if ( isset($_GET['id']) && $_GET['id'] == -1){
         $dato['id']=-1;
-        $dato['nombre']="";
+        $dato['nombre']=$_GET['nombre'];
     }
 
 ?>

@@ -30,7 +30,7 @@ function borrarCiudad($id,$con)
 }
 function buscarCiudad($nombre,$con)
 {
-    $sql= "SELECT * FROM `ciudades` WHERE nombre='" . $nombre . "'";
+    $sql= "SELECT * FROM `ciudades` WHERE nombre like '%" . $nombre . "%'";
     $filas=$con->query($sql);
     return $filas;
 }

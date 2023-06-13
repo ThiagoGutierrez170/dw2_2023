@@ -14,7 +14,7 @@ include("../libs/ciudades.lib.php");
             
         }
         else{
-            header('Location:../index.php?mod=newciudad&&id='.$_POST['id'].'&&errores='. urlencode(implode('!<br>', $err)));
+            header('Location:../index.php?mod=newciudad&&id='.$_POST['id'].'&nombre='.$_POST['nombre'].'&errores='. urlencode(implode('!<br>', $err)));
         }
     }
 ?>

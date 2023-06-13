@@ -21,12 +21,12 @@ if ($_GET and isset($_GET['id'])){
     }
     if ( isset($_GET['id']) && $_GET['id'] == -1){
         $dato['id']=-1;
-        $dato['nombre']="";
-        $dato['apellido']="";
-        $dato['cin']="";
-        $dato['direccion']="";
-        $dato['fecha_nac']="";
-        $dato['ciudad_id']="";
+        $dato['nombre']=$_GET['nombre'];
+        $dato['apellido']=$_GET['apellido'];
+        $dato['cin']=$_GET['cin'];
+        $dato['direccion']=$_GET['direccion'];
+        $dato['fecha_nac']=$_GET['fecha_nac'];
+        $dato['ciudad_id']=$_GET['ciudad_id'];
     }
     $cdatos=traerCiudades($conn);
 ?>

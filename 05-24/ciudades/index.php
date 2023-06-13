@@ -30,7 +30,7 @@ if (isset($_GET['b'])) {
            <button type="submit">buscar</button>
         </form>
         <a href="index.php?mod=newciudad">Nuevo</a>
-    <table border=1>
+    <table border=1 class="table table-dark table-striped">
         <thead>
             <tr>
                 <th><a href="index.php?mod=ciudades&&orden=id">Id</a></th>
