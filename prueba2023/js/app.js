@@ -47,7 +47,7 @@ function eventosclck(){
 }
 
 function guardar(){
-    var gid =correo[correo.length-1].id+1;
+    var gid =correo[correo.length-1]+1;
     var gnombre = document.getElementById("nombre").value;
     var gemail = document.getElementById("email").value;
     var gmensaje = document.getElementById("mensaje").value;
